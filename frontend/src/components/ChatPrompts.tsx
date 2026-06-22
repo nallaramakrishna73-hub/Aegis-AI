@@ -14,7 +14,7 @@ export function ChatPrompts({ onPrompt }: ChatPromptsProps) {
   return (
     <div className="card-glow p-6">
       <h3 className="text-lg font-semibold text-slate-100 mb-4">Ask Aegis-AI</h3>
-      <p className="text-slate-400 text-sm mb-4">Use one of the quick prompts to test the security assistant.</p>
+      <p className="text-slate-400 text-sm mb-4">Tap a prompt to ask the assistant quick security questions.</p>
       <div className="space-y-3">
         {prompts.map((prompt) => (
           <button

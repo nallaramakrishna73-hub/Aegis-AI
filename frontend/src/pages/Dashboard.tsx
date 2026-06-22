@@ -95,22 +95,51 @@ export function Dashboard() {
 
   return (
     <div className="space-y-6">
-      {/* Header with refresh button */}
-      <div className="flex items-center justify-between">
-        <div>
-          <h1 className="text-3xl font-bold text-slate-100">Security Dashboard</h1>
-          <p className="text-slate-400 mt-1">
-            Last updated: {lastUpdated.toLocaleTimeString()}
-          </p>
+      <div className="grid grid-cols-1 xl:grid-cols-3 gap-6">
+        <div className="card-glow p-6 xl:col-span-2">
+          <div className="flex items-start justify-between gap-4">
+            <div>
+              <p className="text-sm uppercase tracking-[0.2em] text-dark-400">Security command center</p>
+              <h1 className="text-3xl font-bold text-slate-100 mt-3">Security Dashboard</h1>
+              <p className="text-slate-400 mt-2 max-w-2xl">
+                Monitor threat activity, investigate alerts, and generate executive reports with confidence.
+              </p>
+            </div>
+            <button
+              onClick={fetchData}
+              disabled={loading}
+              className="btn-primary flex items-center gap-2 disabled:opacity-50"
+            >
+              <RefreshCw className={`w-4 h-4 ${loading ? 'animate-spin' : ''}`} />
+              Refresh Dashboard
+            </button>
+          </div>
+          <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div className="rounded-3xl border border-slate-700 bg-slate-950/80 p-5 shadow-glow">
+              <p className="text-slate-400 text-sm">Latest update</p>
+              <p className="text-slate-100 font-semibold mt-2">{lastUpdated.toLocaleString()}</p>
+            </div>
+            <div className="rounded-3xl border border-slate-700 bg-slate-950/80 p-5 shadow-glow">
+              <p className="text-slate-400 text-sm">Active monitoring</p>
+              <p className="text-slate-100 font-semibold mt-2">Live log analysis enabled</p>
+            </div>
+          </div>
         </div>
-        <button
-          onClick={fetchData}
-          disabled={loading}
-          className="btn-primary flex items-center gap-2 disabled:opacity-50"
-        >
-          <RefreshCw className={`w-4 h-4 ${loading ? 'animate-spin' : ''}`} />
-          Refresh
-        </button>
+        <div className="card-glow p-6 bg-gradient-to-br from-slate-900 via-slate-800 to-dark-950">
+          <p className="text-sm uppercase tracking-[0.2em] text-dark-400">Pulse</p>
+          <h2 className="text-2xl font-bold text-slate-100 mt-3">System protection status</h2>
+          <p className="text-slate-400 mt-3">All sensors are active and the threat feed is connected.</p>
+          <div className="mt-6 grid grid-cols-2 gap-3">
+            <div className="rounded-2xl bg-slate-900/80 border border-slate-700 p-4">
+              <p className="text-slate-400 text-xs uppercase tracking-[0.12em]">Threats</p>
+              <p className="text-3xl font-semibold text-slate-100 mt-2">{summary?.totalAlerts ?? 0}</p>
+            </div>
+            <div className="rounded-2xl bg-slate-900/80 border border-slate-700 p-4">
+              <p className="text-slate-400 text-xs uppercase tracking-[0.12em]">Risk score</p>
+              <p className="text-3xl font-semibold text-slate-100 mt-2">{summary ? (summary.highRisk + summary.criticalRisk) : 0}</p>
+            </div>
+          </div>
+        </div>
       </div>
 
       {/* Overview Cards */}

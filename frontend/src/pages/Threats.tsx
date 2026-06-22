@@ -52,9 +52,16 @@ export function Threats() {
 
   return (
     <div className="space-y-6">
-      <div>
-        <h1 className="text-3xl font-bold text-slate-100">Threat Intelligence</h1>
-        <p className="text-slate-400 mt-1">Detailed view of all detected threats and incidents</p>
+      <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
+        <div>
+          <p className="text-sm uppercase tracking-[0.2em] text-dark-400">Threat intelligence</p>
+          <h1 className="text-3xl font-bold text-slate-100 mt-3">Threat Intelligence</h1>
+          <p className="text-slate-400 mt-2 max-w-2xl">View detected incidents, source patterns, and actionable guidance for remediation.</p>
+        </div>
+        <div className="inline-flex items-center gap-2 rounded-3xl bg-slate-900 border border-slate-700 px-4 py-3 shadow-glow">
+          <span className="text-xs uppercase tracking-[0.2em] text-dark-400">Live</span>
+          <span className="text-slate-100 font-semibold">Real-time insights</span>
+        </div>
       </div>
 
       <div className="space-y-4">
@@ -73,29 +80,29 @@ export function Threats() {
               className="card-glow overflow-hidden"
             >
               <button
-                onClick={() => setExpandedId(expandedId === threat.id ? null : threat.id)}
-                className="w-full px-6 py-4 flex items-center justify-between hover:bg-slate-800 transition-colors"
-              >
-                <div className="flex items-center gap-4 flex-1">
-                  <div className={`p-2 rounded-lg ${getRiskBadgeBackground(threat.risk)}`}>
-                    <AlertCircle className={`w-5 h-5 ${getRiskIconColor(threat.risk)}`} />
-                  </div>
-                  <div className="text-left">
-                    <p className="font-semibold text-slate-100">{threat.type.replace(/_/g, ' ').toUpperCase()}</p>
-                    <p className="text-sm text-slate-400">{threat.description}</p>
-                  </div>
+              onClick={() => setExpandedId(expandedId === threat.id ? null : threat.id)}
+              className="w-full px-6 py-4 flex items-center justify-between rounded-3xl bg-slate-900 border border-slate-700 hover:bg-slate-800 transition-all"
+            >
+              <div className="flex items-center gap-4 flex-1">
+                <div className={`p-3 rounded-3xl ${getRiskBadgeBackground(threat.risk)} bg-opacity-15`}>
+                  <AlertCircle className={`w-5 h-5 ${getRiskIconColor(threat.risk)}`} />
                 </div>
-                <div className="flex items-center gap-4">
-                  <span className={`risk-badge ${getRiskColor(threat.risk)}`}>
-                    {threat.risk.toUpperCase()}
-                  </span>
-                  <ChevronDown
-                    className={`w-5 h-5 text-slate-400 transition-transform ${
-                      expandedId === threat.id ? 'rotate-180' : ''
-                    }`}
-                  />
+                <div className="text-left">
+                  <p className="font-semibold text-slate-100">{threat.type.replace(/_/g, ' ').toUpperCase()}</p>
+                  <p className="text-sm text-slate-400">{threat.description}</p>
                 </div>
-              </button>
+              </div>
+              <div className="flex items-center gap-4">
+                <span className={`risk-badge ${getRiskColor(threat.risk)} uppercase tracking-[0.18em]`}>
+                  {threat.risk}
+                </span>
+                <ChevronDown
+                  className={`w-5 h-5 text-slate-400 transition-transform ${
+                    expandedId === threat.id ? 'rotate-180' : ''
+                  }`}
+                />
+              </div>
+            </button>
 
               {expandedId === threat.id && (
                 <div className="px-6 py-4 bg-slate-900 border-t border-slate-700 space-y-4">

@@ -28,7 +28,7 @@ export function LiveAlerts({ threat }: LiveAlertsProps) {
       <div className="space-y-3">
         <div className="bg-slate-900 rounded-lg p-4 border border-slate-700">
           <p className="text-sm text-slate-400">Latest threat detected</p>
-          <p className="text-slate-100 font-semibold mt-2">{threat.type.replace(/_/g, ' ').toUpperCase()}</p>
+          <p className="text-slate-100 font-semibold mt-2">{threat.type.replace(/_/g, ' ').toUpperCase()} 🚨</p>
           <p className="text-slate-400 text-sm mt-1">{threat.description}</p>
           <p className="text-slate-400 text-xs mt-2">Source: {threat.sourceIp}</p>
         </div>
