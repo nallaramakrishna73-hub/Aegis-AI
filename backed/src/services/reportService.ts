@@ -1,7 +1,14 @@
 import PDFDocument from 'pdfkit';
-import { Document, Packer, Paragraph, TextRun } from 'docx';
+import * as docx from 'docx';
 import fs from 'fs';
 import { ThreatRecord } from '../models/threat.js';
+
+const { Document, Packer, Paragraph, TextRun } = docx as typeof docx & {
+  Document: any;
+  Packer: any;
+  Paragraph: any;
+  TextRun: any;
+};
 
 export class ReportService {
   async generatePdf(threats: ThreatRecord[], filePath: string) {
