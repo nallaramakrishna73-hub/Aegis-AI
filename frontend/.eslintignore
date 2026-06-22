@@ -1,0 +1,5 @@
+src/**/*.ts
+src/**/*.tsx
+dist/
+node_modules/
+*.config.ts

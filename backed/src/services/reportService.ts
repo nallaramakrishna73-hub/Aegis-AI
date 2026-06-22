@@ -1,7 +1,6 @@
 import PDFDocument from 'pdfkit';
 import { Document, Packer, Paragraph, TextRun } from 'docx';
 import fs from 'fs';
-import path from 'path';
 import { ThreatRecord } from '../models/threat.js';
 
 export class ReportService {
