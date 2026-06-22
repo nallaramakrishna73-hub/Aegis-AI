@@ -3,10 +3,12 @@
   "private": true,
   "version": "0.1.0",
   "type": "module",
+  "homepage": "https://nallaramakrishna73-hub.github.io/Aegis-AI/",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
+    "deploy": "npx gh-pages -d dist",
     "lint": "eslint . --ext .ts,.tsx"
   },
   "dependencies": {
@@ -26,6 +28,7 @@
     "postcss": "^8.4.41",
     "tailwindcss": "^3.4.10",
     "typescript": "^5.5.4",
-    "vite": "^5.3.1"
+    "vite": "^5.3.1",
+    "gh-pages": "^5.0.0"
   }
 }
