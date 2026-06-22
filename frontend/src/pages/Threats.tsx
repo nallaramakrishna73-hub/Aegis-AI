@@ -32,6 +32,24 @@ export function Threats() {
     }
   }
 
+  function getRiskBadgeBackground(risk: string) {
+    switch (risk) {
+      case 'critical': return 'bg-red-900';
+      case 'high': return 'bg-orange-900';
+      case 'medium': return 'bg-yellow-900';
+      default: return 'bg-emerald-900';
+    }
+  }
+
+  function getRiskIconColor(risk: string) {
+    switch (risk) {
+      case 'critical': return 'text-red-200';
+      case 'high': return 'text-orange-200';
+      case 'medium': return 'text-yellow-200';
+      default: return 'text-emerald-200';
+    }
+  }
+
   return (
     <div className="space-y-6">
       <div>
@@ -59,16 +77,8 @@ export function Threats() {
                 className="w-full px-6 py-4 flex items-center justify-between hover:bg-slate-800 transition-colors"
               >
                 <div className="flex items-center gap-4 flex-1">
-                  <div className={`p-2 rounded-lg bg-${
-                    threat.risk === 'critical' ? 'red' : 
-                    threat.risk === 'high' ? 'orange' : 
-                    threat.risk === 'medium' ? 'yellow' : 'emerald'
-                  }-900`}>
-                    <AlertCircle className={`w-5 h-5 text-${
-                      threat.risk === 'critical' ? 'red' : 
-                      threat.risk === 'high' ? 'orange' : 
-                      threat.risk === 'medium' ? 'yellow' : 'emerald'
-                    }-200`} />
+                  <div className={`p-2 rounded-lg ${getRiskBadgeBackground(threat.risk)}`}>
+                    <AlertCircle className={`w-5 h-5 ${getRiskIconColor(threat.risk)}`} />
                   </div>
                   <div className="text-left">
                     <p className="font-semibold text-slate-100">{threat.type.replace(/_/g, ' ').toUpperCase()}</p>

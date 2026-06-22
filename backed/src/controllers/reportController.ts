@@ -26,7 +26,7 @@ router.post('/', async (req, res) => {
 });
 
 router.get('/download/:fileName', (req, res) => {
-  const filePath = path.resolve(process.cwd(), 'backed', 'data', req.params.fileName);
+  const filePath = path.resolve(process.cwd(), 'data', req.params.fileName);
   res.sendFile(filePath);
 });
 
