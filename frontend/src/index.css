@@ -1,0 +1,59 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply bg-slate-950 text-slate-100 font-sans;
+}
+
+.risk-badge {
+  @apply px-3 py-1 rounded-full font-semibold text-sm;
+}
+
+.risk-low {
+  @apply bg-emerald-900 text-emerald-200;
+}
+
+.risk-medium {
+  @apply bg-yellow-900 text-yellow-200;
+}
+
+.risk-high {
+  @apply bg-orange-900 text-orange-200;
+}
+
+.risk-critical {
+  @apply bg-red-900 text-red-200;
+}
+
+.card {
+  @apply bg-slate-800 border border-slate-700 rounded-lg shadow-lg;
+}
+
+.card-glow {
+  @apply card shadow-glow hover:shadow-glow-lg transition-shadow;
+}
+
+.btn-primary {
+  @apply px-4 py-2 bg-dark-600 hover:bg-dark-700 text-white rounded-lg font-medium transition-colors;
+}
+
+.btn-secondary {
+  @apply px-4 py-2 bg-slate-700 hover:bg-slate-600 text-slate-100 rounded-lg font-medium transition-colors;
+}
+
+.status-badge {
+  @apply px-2 py-1 rounded text-xs font-semibold;
+}
+
+.status-new {
+  @apply bg-blue-900 text-blue-200;
+}
+
+.status-investigating {
+  @apply bg-purple-900 text-purple-200;
+}
+
+.status-resolved {
+  @apply bg-green-900 text-green-200;
+}
